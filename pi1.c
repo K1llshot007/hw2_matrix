@@ -15,11 +15,11 @@ int main() {
     for (i = 0; i < n; i++) {
         x = (i + 0.5) / n; /* one add, one divide */
         area += 4.0 / (1.0 + x * x); /* two adds, one multiply, one divide */ 
-        temp = 4.0 / (1.0 + x * x); /*one add, one multiply, one divide*/
-        #pragma omp critical
-        {
-            area += temp; /* one add */
-        }
+        // temp = 4.0 / (1.0 + x * x); /*one add, one multiply, one divide*/
+        // #pragma omp critical
+        // {
+        //     area += temp; /* one add */
+        // }
     }
     double pi_est = area / n;
     elt = omp_get_wtime() - elt;
