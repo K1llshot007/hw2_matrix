@@ -10,7 +10,7 @@ int main() {
     int i;
 
     double elt = omp_get_wtime();
-    // #pragma omp parallel shared(area)
+    #pragma omp parallel 
     {
     // #pragma omp for reduction(+:area)
     for (i = 0; i < n; i++) {
