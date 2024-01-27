@@ -10,19 +10,17 @@ int main() {
     int i;
     double temp = 0.0;
     double elt = omp_get_wtime();
-    // #pragma omp parallel for 
-    // {
-    #pragma omp parallel for 
-    // reduction(+:area)
+   
+    #pragma omp parallel for reduction(+:area)
     for (i = 0; i < n; i++) {
         x = (i + 0.5) / n; /* one add, one divide */
-        temp = 4.0 / (1.0 + x * x); /* two adds, one multiply, one divide */
+        area += 4.0 / (1.0 + x * x); /* two adds, one multiply, one divide */ 
+        temp = 4.0 / (1.0 + x * x); /*one add, one multiply, one divide*/
         #pragma omp critical
         {
             area += temp; /* one add */
         }
     }
-    // }
     double pi_est = area / n;
     elt = omp_get_wtime() - elt;
 
