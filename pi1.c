@@ -12,7 +12,7 @@ int main() {
     double elt = omp_get_wtime();
     #pragma omp parallel shared(area)
     {
-    #pragma omp for reduction(+:area)
+    // #pragma omp for reduction(+:area)
     for (i = 0; i < n; i++) {
         x = (i + 0.5) / n; /* one add, one divide */
         area += 4.0 / (1.0 + x * x); /* two adds, one multiply, one divide */
